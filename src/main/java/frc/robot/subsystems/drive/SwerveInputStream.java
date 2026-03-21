@@ -1,4 +1,4 @@
-package frc.robot.lib;
+package frc.robot.subsystems.drive;
 
 import static edu.wpi.first.units.Units.Meters;
 import static edu.wpi.first.units.Units.Radians;
@@ -30,7 +30,6 @@ import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.subsystems.drive.SwerveDrive;
-import swervelib.math.SwerveMath;
 
 /**
  * Helper class to easily transform Controller inputs into workable Chassis speeds. Intended to easily create an
@@ -1055,7 +1054,7 @@ public class SwerveInputStream implements Supplier<ChassisSpeeds>
    */
   public AngularVelocity calculateAngularVelocity(Angle target)
   {
-    var omegaRadiansPerSecond = swerveController.headingCalculate(swerveDrive.getOdometryHeading().getRadians(),
+    var omegaRadiansPerSecond = swerveController.headingCalculate(swerveDrive.getRotation().getRadians(),
                                                                   target.in(Radians));
     if (azimuthFeedforward.isPresent())
     {
